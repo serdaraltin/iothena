@@ -1,0 +1,15 @@
+capabilities:
+  wireless_communication:
+    - "Wi-Fi 802.11 b/g/n"
+    - "Bluetooth 4.2"
+  supported_protocols:
+    - "I2C"
+    - "SPI"
+    - "UART"
+    - "PWM"
+  supported_modules:
+    - "Temperature sensors (DHT22)"
+    - "Light sensors (BH1750)"
+    - "Analog-to-Digital Converters (ADS1115)"
+    - "Relay Modules"
+    - "GPS Modules"

@@ -1,0 +1,22 @@
+security:
+  authentication:
+    ssh:
+      enabled: true
+      default_user: "${SSH_USER}"  # SSH default user from environment
+      default_password: "${SSH_PASSWORD}"  # SSH default password from environment
+    api_keys:
+      enabled: true
+      keys:
+        - "${API_KEY_1}"  # API key 1 from environment
+        - "${API_KEY_2}"  # API key 2 from environment
+  encryption:
+    enabled: true
+    protocols:
+      - "TLS 1.3"
+      - "AES-256"
+  firewall:
+    enabled: true
+    allowed_ports:
+      - 22  # SSH
+      - 80  # HTTP
+      - 443 # HTTPS

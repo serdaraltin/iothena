@@ -1,0 +1,9 @@
+firmware:
+  version: "1.0.0"
+  release_date: "2025-01-15"
+  changelog:
+    - "Initial release with basic functionality."
+    - "Added support for ADS1115 and BH1750 sensors."
+  auto_update:
+    enabled: true
+    check_interval: 86400

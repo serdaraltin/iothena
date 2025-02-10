@@ -1,0 +1,19 @@
+schedule:
+  tasks:
+    - name: "Send Status Update"
+      type: "status_update"
+      interval: 300
+      data_points:
+        - "temperature"
+        - "humidity"
+        - "uptime"
+        - "cpu_usage"
+    - name: "Check Alerts"
+      type: "alert_check"
+      interval: 60
+      parameters:
+        - "temperature"
+        - "humidity"
+    - name: "Send Telemetry"
+      type: "telemetry_upload"
+      interval: 60

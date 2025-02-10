@@ -1,0 +1,12 @@
+user_profiles:
+  admin:
+    username: "admin"
+    access_level: "Full"
+    last_login: "2025-01-15T12:00:00Z"
+  users:
+    - username: "user1"
+      access_level: "Read"
+      last_login: "2025-01-10T09:30:00Z"
+    - username: "technician"
+      access_level: "Write"
+      last_login: "2025-01-12T14:00:00Z"

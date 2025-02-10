@@ -1,0 +1,55 @@
+peripherals:
+  i2c:
+    ads1115_01:
+      device: "peripherals.converters.ads1115"
+      id: 1
+      connected: true
+      polling_interval: 10
+      connection:
+        pins:
+          A0:
+            device: "peripherals.sensors.voltage_25v"
+            properties:
+              range:
+                min: 3.5
+                max: 4.2
+
+  analog:
+    MQ7_gas:
+      sensor_id: "mq7-gas-001"
+      type: "Gas Sensor"
+      connection:
+        type: "gpio"
+        pin: "gpio.gas_sensor"
+      polling_interval: 30
+      connected: true
+
+  digital:
+    DHT22_temperature:
+      sensor_id: "dht22-temp-001"
+      type: "Temperature Sensor"
+      connection:
+        type: "gpio"
+        pin: "gpio.temperature_sensor"
+      polling_interval: 30
+      connected: true
+
+  uart:
+    ESP8266:
+      sensor_id: "esp8266-001"
+      type: "WiFi Module"
+      connection:
+        type: "uart"
+        pin: "gpio.esp8266"
+      polling_interval: 60
+      connected: false
+
+  wireless:
+    RF433MHz:
+      sensor_id: "rf433mhz-001"
+      type: "RF Module"
+      connection:
+        type: "gpio"
+        pin: "gpio.rf_module"
+      polling_interval: 60
+      connected: true

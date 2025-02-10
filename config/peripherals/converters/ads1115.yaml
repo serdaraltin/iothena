@@ -1,0 +1,16 @@
+ads1115:
+  description: "Analog-to-Digital Converter"
+  connection:
+    type: "i2c"
+    address: "0x48"
+    pins:
+      A0: null
+      A1: null
+      A2: null
+      A3: null
+      ALRT: null
+      ADDR: null
+      SDA: "pins.i2c.sda"
+      SCL: "pins.i2c.scl"
+      GND: ground
+      VDD: 2.0-5.5

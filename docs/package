@@ -1,0 +1,2 @@
+sudo apt install -y libcap-dev
+sudo apt install -y libcamera-apps libcamera-dev

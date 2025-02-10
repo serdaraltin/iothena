@@ -1,0 +1,40 @@
+alerts:
+  thresholds:
+    temperature:
+      max: 50
+      min: 0
+    humidity:
+      max: 90
+      min: 20
+  actions:
+    temperature:
+      above_max: "send_alert_email"
+      below_min: "log_warning"
+    humidity:
+      above_max: "send_alert_sms"
+      below_min: "log_warning"
+
+alerts_and_notifications:
+  alerts:
+    - thresholds:
+        temperature:
+          max: 50
+          min: 0
+        humidity:
+          max: 90
+          min: 20
+    - type: "Temperature Threshold Exceeded"
+      severity: "High"
+      action: "Shut down device"
+    - type: "Low Battery"
+      severity: "Medium"
+      action: "Send notification"
+  notifications:
+    email:
+      enabled: true
+      recipients:
+        - "admin@example.com"
+      smtp_server: "smtp.example.com"
+      smtp_port: 587
+    sms:
+      enabled: false

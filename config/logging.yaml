@@ -1,0 +1,10 @@
+logging:
+    name: "datakapan"
+    level: "debug"
+    path: "logs"
+    file: "app.log"
+    format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    rotation:
+        enabled: true
+        max_size: "50MB"
+        max_files: 20

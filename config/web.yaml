@@ -1,0 +1,33 @@
+web:
+  host: "0.0.0.0"  # The IP address where the web interface will listen
+  port: 8080        # The port on which the web interface will listen
+  base_url: "/web"  # The base URL for the web interface
+  
+  ssl:
+    enabled: false  # Whether SSL should be enabled
+    certificate_path: "/path/to/certificate.crt"  # Path to SSL certificate
+    private_key_path: "/path/to/private.key"      # Path to SSL private key
+
+  authentication:
+    enabled: true
+    login_url: "/login"  # The login page URL
+    session_timeout: 1800  # Session timeout in seconds (e.g., 30 minutes)
+
+  logging:
+    level: "info"  # The log level for web interface logging
+    file_path: "logs/web.log"  # Path to the log file for web interface activities
+
+  ui:
+    theme: "light"  # The theme for the UI (e.g., "light" or "dark")
+    refresh_interval: 5  # The refresh interval for the UI in seconds
+
+  rate_limiting:
+    enabled: true
+    max_requests: 1000  # The maximum number of requests allowed to the web interface
+    window: 3600       # Rate limiting window (in seconds)
+    response_code: 429 # HTTP response code when rate limit is exceeded
+
+  cors:
+    enabled: true
+    allowed_origins:
+      - "*"  # Allowed domains for CORS

@@ -1,0 +1,13 @@
+actuators:
+  led_strip:
+    type: "WS2812B"
+    pin: "gpio.led_strip"
+    brightness: 255
+  relay:
+    type: "GenericRelay"
+    pin: "gpio.relay"
+    state: "off"
+  fan:
+    type: "PWMFan"
+    pin: "pwm.fan"
+    speed: 0

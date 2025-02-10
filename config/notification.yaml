@@ -1,0 +1,33 @@
+notification:
+  enabled: true  # Enable or disable notifications for the device
+  channels:
+    - "email"  # Send notifications via email
+    - "sms"    # Send notifications via SMS
+    - "push"   # Send notifications via push notifications
+    - "telegram"  # Send notifications via Telegram
+  notification_frequency:
+    interval: 10  # Time interval (in minutes) between notifications for the same event
+  settings:
+    email:
+      smtp_server: "${SMTP_SERVER}"  # SMTP server address from environment
+      port: 587  # SMTP server port
+      username: "${SMTP_USERNAME}"  # SMTP username from environment
+      password: "${SMTP_PASSWORD}"  # SMTP password from environment
+      from_address: "${EMAIL_FROM_ADDRESS}"  # From email address from environment
+      subject_prefix: "[Device Alert]"  # Prefix for email subject
+    sms:
+      provider: "Twilio"  # SMS service provider
+      api_key: "${TWILIO_API_KEY}"  # API key for Twilio from environment
+      sender_number: "${SMS_SENDER_NUMBER}"  # Sender phone number from environment
+    push:
+      provider: "Pushbullet"  # Push notification service provider
+      api_key: "${PUSHBULLET_API_KEY}"  # API key for Pushbullet from environment
+    telegram:
+      bots:
+        - name: "status_bot"
+          bot_token: "${TELEGRAM_BOT_TOKEN}"  # Telegram bot token from environment
+          chat_id: "${TELEGRAM_CHAT_ID}"  # Telegram chat ID from environment
+  escalation:
+    enabled: true  # Enable or disable notification escalation
+    escalation_interval: 15  # Time interval (in minutes) for escalation notifications
+    max_attempts: 3  # Maximum number of escalation attempts before the issue is considered resolved

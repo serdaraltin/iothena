@@ -1,0 +1,13 @@
+diagnostics:
+  hardware_tests:
+    cpu_stress_test: true
+    memory_check: true
+    storage_health: true
+  network_tests:
+    ping_google: true
+    check_dns: true
+  sensor_tests:
+    - name: "Temperature Sensor Check"
+      enabled: true
+    - name: "Voltage Sensor Calibration"
+      enabled: true

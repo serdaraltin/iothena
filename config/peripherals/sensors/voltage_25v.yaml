@@ -1,0 +1,16 @@
+voltage_25v:
+  description: "0-25V Voltage Sensor"
+  connection:
+    type: "analog"
+    pins:
+      signal:
+        type: "analog"
+      vcc:
+        type: "power"
+        voltage: 5
+      gnd:
+        type: "ground"
+  properties:
+    range:
+      min: 0
+      max: 25

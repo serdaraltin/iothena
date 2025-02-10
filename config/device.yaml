@@ -1,0 +1,21 @@
+device:
+  base_noise_level: 5
+  ip_address:
+  - 127.0.0.1
+  - 10.10.10.10
+  - 10.42.0.1
+  - 192.168.122.1
+  - 100.66.133.10
+  - 172.19.0.1
+  - 172.21.0.1
+  - 172.20.0.1
+  - 172.18.0.1
+  - 172.17.0.1
+  location: Oda 25
+  model: Raspberry_Pi_Zero_2_W
+  name: Sentinel 2
+  port: 5000
+  room_size: 5
+  threshold: 5
+  type: sentinel
+

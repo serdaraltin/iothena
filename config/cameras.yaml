@@ -1,0 +1,10 @@
+cameras:
+  output_dir: "captures"
+  cameras:
+    - index: 0
+      name: "front"
+      resolution:
+        width: 640
+        height: 480
+      fps: 30
+

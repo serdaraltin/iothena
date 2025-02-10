@@ -1,0 +1,16 @@
+power_management:
+  input_voltage: "5V"
+  input_current: "2.5A max"
+  battery:
+    supported: false
+  power_modes:
+    - name: "Normal"
+      description: "Default operating mode"
+      power_consumption: "2.5W"
+    - name: "Low Power"
+      description: "Reduces CPU and peripheral usage"
+      power_consumption: "1.2W"
+  thermal_management:
+    temperature_thresholds:
+      warning: 70  # Celsius
+      critical: 85  # Celsius

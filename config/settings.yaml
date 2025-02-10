@@ -1,0 +1,43 @@
+settings:
+  debug_mode: false
+  databases:
+    local:
+      type: "sqlite"
+      path: "database/local_data.sqlite"
+    remote:
+      driver: "postgresql"
+      host: "localhost"
+      port: 5432
+      username: "${DB_USERNAME}"  # Database username from environment
+      password: "${DB_PASSWORD}"  # Database password from environment
+      database_name: "datakapan"
+      ssl: true
+  dashboard:
+    enabled: true
+    web_host: "0.0.0.0"
+    web_port: 8080
+    refresh_interval: 5
+  logging:
+    file_path: "logs/device.log"
+    level: "info"
+    rotation_policy:
+      size_mb: 10
+      backup_count: 5
+  network:
+    api_host: "0.0.0.0"
+    api_port: 5000
+    cors_allowed_origins:
+      - "*"
+    mqtt:
+      broker_host: "${MQTT_BROKER_HOST}"  # MQTT broker host from environment
+      broker_port: 1883
+      client_id: "RPi-IoT-Client"
+      topics:
+        telemetry: "telemetry/data"
+        alerts: "alerts/warning"
+        status: "status/update"
+  telemetry:
+    server_url: "https://telemetry.example.com/api/v1/data"
+    auth_token: "${TELEMETRY_AUTH_TOKEN}"  # Telemetry auth token from environment
+    send_interval: 60
+    max_buffer_size: 1000

@@ -1,0 +1,16 @@
+maintenance:
+  disk_cleanup:
+    enabled: true
+    interval: 604800  # 7 days in seconds
+  firmware_update:
+    enabled: true
+    check_interval: 86400  # 1 day in seconds
+  sensor_calibration:
+    enabled: true
+    schedule:
+      - "2025-02-01T00:00:00Z"
+      - "2025-02-15T00:00:00Z"
+  health_check:
+    enabled: true
+    interval: 3600  # Seconds
+    report_to: "/var/log/health_check.log"

@@ -1,0 +1,10 @@
+network:
+  wifi:
+    ssid: "${WIFI_SSID}"  # Wi-Fi SSID from environment
+    password: "${WIFI_PASSWORD}"  # Wi-Fi password from environment (critical)
+    ip_address: "${WIFI_IP_ADDRESS}"  # Wi-Fi IP address from environment
+    gateway: "${WIFI_GATEWAY}"  # Wi-Fi gateway from environment
+    dns: "${WIFI_DNS}"  # Wi-Fi DNS from environment
+  bluetooth:
+    device_name: "${BLUETOOTH_DEVICE_NAME}"  # Bluetooth device name from environment (critical)
+    enabled: true

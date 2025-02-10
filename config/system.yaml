@@ -1,0 +1,16 @@
+system:
+  name: "Raspberry Pi Zero 2 W"
+  model: "Zero 2 W"
+  hardware:
+    cpu: "ARM Cortex-A53"
+    cores: 4
+    memory: "512MB"
+    storage: "SD"
+  power:
+    input_voltage: "5V"
+    power_consumption: "2.5W max"
+  os:
+    supported:
+      - "Raspberry Pi OS"
+      - "Ubuntu Server"
+      - "Kali Linux"
