@@ -1,8 +1,13 @@
 services:
-  whisper:
-    api:
-      url: "http://100.100.74.86/transcribe"
-      key: "${WHISPER_API_KEY}"  # Whisper API key from environment
-  yolo:
-    api:
-      url: "http://100.105.45.107:5002/detect_human"
+  logging:
+    enabled: true
+    console:
+      enabled: true
+    file:
+      enabled: true
+  api:
+    enabled: true
+  telegram:
+    enabled: false
+  camera:
+    enabled: false

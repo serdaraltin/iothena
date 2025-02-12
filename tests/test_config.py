@@ -1,7 +1,7 @@
 import unittest
 import os
 import json
-from config.config_manager import Config
+from app.services.systems.config import Config
 
 
 class TestConfig(unittest.TestCase):

@@ -56,4 +56,10 @@ class Resource(BaseInfo):
         }
 
 
+    def update(self):
+        self.cpu = self.get_cpu_info()
+        self.memory = self.get_memory_info()
+        self.disk = self.get_disk_info()
+        self.battery = self.get_battery_info()
+
 RESOURCE = Resource()

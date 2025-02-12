@@ -1,5 +1,6 @@
 import os
 import yaml
+from dotenv import load_dotenv
 
 WORKING_DIR = os.getcwd()
 CONFIG_DIR = os.path.join(WORKING_DIR, 'config')
@@ -59,6 +60,7 @@ class Config:
         return repr(self.__dict__)
 
     def __init__(self):
+        load_dotenv()
         self.loader_class = ConfigLoader
 
         self.work_dir = WORKING_DIR
@@ -74,6 +76,7 @@ class Config:
         self.cameras = self.loader_class('cameras')
         self.time = self.loader_class('time')
         self.notification = self.loader_class('notification')
+        self.services = self.loader_class('services')
 
     def sub_loader(self, path):
         path = path.split('.')

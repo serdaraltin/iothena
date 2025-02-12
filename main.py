@@ -1,25 +1,1 @@
-from app.services.networks.api import API_SERVICE
-from app.services.notification.telegram import TELEGRAM_SERVICE
-from app.services.peripherals.camera import CAMERA_SERVICE
-from app.services.systems.logger import LOGGER
-from app.services.systems.thread import THREAD_SERVICE
-
-if __name__ == '__main__':
-
-
-    try:
-        THREAD_SERVICE.start(target=API_SERVICE.start, name=API_SERVICE.__class__.__name__)
-        THREAD_SERVICE.start(target=TELEGRAM_SERVICE.start, name=API_SERVICE.__class__.__name__)
-        #THREAD_SERVICE.start(target=CAMERA_SERVICE.start, name=CAMERA_SERVICE.__class__.__name__)
-
-        #data = FETCH_SERVICE.bad_words
-
-
-        while True:
-            pass
-
-    except KeyboardInterrupt:
-        LOGGER.info(f"[{__name__}] Exiting...")
-    finally:
-        THREAD_SERVICE.stop_all()
-
+import timeimport signalimport sysfrom app.helpers.signal import SignalHelperfrom app.services.systems.logger import LOGGERfrom app.services.systems.service import SERVICEdef main():    """Main function to start services and keep the program running."""    try:        # Start all services        SERVICE.start_all()        # Infinite loop to keep the program running        while True:            time.sleep(1)  # Check every 1 second    except Exception as e:        LOGGER.error(f"Unexpected error: {e}")        SERVICE.stop_all()        sys.exit(1)  # Exit with error code 1if __name__ == '__main__':    # Register signal handler for graceful shutdown    signal.signal(signal.SIGINT, SignalHelper.signal_handler)  # Handle Ctrl+C    signal.signal(signal.SIGTERM, SignalHelper.signal_handler)  # Handle termination signal    # Log program startup    LOGGER.info("Program started")    main()    # Log program shutdown    LOGGER.info("Program shut down")

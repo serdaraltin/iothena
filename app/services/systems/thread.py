@@ -1,64 +1,29 @@
 import threading
-
 from app.services.systems.logger import LOGGER
 
-
 class ThreadService:
-    _instance = None
-
-    def __new__(cls, *args, **kwargs):
-        if cls._instance is None:
-            cls._instance = super(ThreadService, cls).__new__(cls, *args, **kwargs)
-            return cls._instance
-
-    def __init__(self):
-        self.cls_name = self.__class__.__name__
-        self.threads = {}
-
-    def get_threads(self):
-        return {name: {"is_alive": thread.is_alive()} for name, thread in self.threads.items()}
-
-    def start(self, target, name):
+    @staticmethod
+    def start_thread(target, thread_name):
+        """Starts a new thread for the given service."""
         try:
             stop_event = threading.Event()
-            thread = threading.Thread(target=target, name=name, daemon=True)
-            thread.daemon = True
+            thread = threading.Thread(target=target, name=thread_name, daemon=True, args=(stop_event,))
             thread.start()
-
-            self.threads[name] = {"thread": thread, "stop_event": stop_event}
-
-            LOGGER.info(f"[{self.cls_name}] New process started: Name={name}, PID={thread.name}")
-            return thread
+            LOGGER.info(f"Thread started: Name={thread_name}")
+            return {"status": "started", "thread_name": thread_name, "stop_event": stop_event}
         except Exception as e:
-            LOGGER.error(f"[{self.cls_name}] Failed to start process: Name={name}, Exception={e}")
+            LOGGER.error(f"Failed to start thread: Name={thread_name}, Exception={e}")
+            return {"status": "failed", "error": str(e)}
 
-    def stop(self, name):
-        if not name in self.threads:
-            LOGGER.warning(f'[{self.cls_name}] Not found process: Name={name}')
-            return False
+    @staticmethod
+    def stop_thread(thread_name, stop_event):
+        """Stops the given thread by setting its stop event."""
         try:
-            self.threads[name]["stop_event"].set()
-            self.threads[name]["thread"].join()
-            LOGGER.info(f'[{self.cls_name}] Stopped process: Name={self.threads[name]["name"]}')
-            self.threads.pop(name)
-            return
+            stop_event.set()
+            LOGGER.info(f"Thread stopped: Name={thread_name}")
+            return {"status": "stopped", "thread_name": thread_name}
         except Exception as e:
-            LOGGER.error(f'[{self.cls_name}] Failed to stop process: Name={name}, Exception={e}')
-            return
-
-    def stop_all(self):
-        if not self.threads:
-            LOGGER.info(f'[{self.cls_name}] Processes list is empty')
-            return False
-        try:
-            for thread in self.threads.values():
-                self.stop(thread["name"])
-            self.threads.clear()
-            LOGGER.info(f'[{self.cls_name}] Stopped all processes')
-            return True
-        except Exception as e:
-            LOGGER.error(f'[{self.cls_name}] Failed to stop all process: Exception={e}')
-            return False
-
+            LOGGER.error(f"Failed to stop thread: Name={thread_name}, Exception={e}")
+            return {"status": "failed", "error": str(e)}
 
 THREAD_SERVICE = ThreadService()
