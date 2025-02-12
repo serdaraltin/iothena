@@ -1,11 +1,15 @@
+import websocket
 from fastapi import APIRouter
+
 
 from app.api.v1.camera import CameraApi
 from app.api.v1.device import DeviceApi
 from app.api.v1.network import NetworkApi
 from app.api.v1.sensor import SensorApi
 from app.api.v1.status import StatusApi
+from app.api.v1.websocket import WebsocketApi
 from app.services.systems.config import CONFIG
+from app.services.systems.logger import LOGGER
 
 base_url = CONFIG.api['base_url']
 
@@ -15,6 +19,10 @@ class V1Router(APIRouter):
         self.add_routes()
 
     def add_routes(self):
+        #Websocket
+        websocket_api = WebsocketApi()
+        self.add_api_websocket_route("/ws/{client_id}", websocket_api.websocket_endpoint)
+        self.add_api_websocket_route('/ws', websocket_api.data)
 
         # Device API
         device_api = DeviceApi()

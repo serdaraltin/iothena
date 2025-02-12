@@ -24,4 +24,8 @@ class Thermal(BaseInfo):
         cpu_temp = sensors['cpu_thermal'][0][1]
         return cpu_temp
 
+    def update(self):
+        self.sensors = self.get_sensors()
+        self.cpu_temp = self.get_cpu_temperature()
+
 THERMAL = Thermal()

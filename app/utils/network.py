@@ -179,12 +179,13 @@ class Network(BaseInfo):
     @staticmethod
     def get_dns_server():
         dns_servers = []
+        return dns_servers
         try:
             dns_info = socket.getaddrinfo('google.com', None)
             for server in dns_info:
                 dns_servers.append(server[4][0])
         except socket.gaierror:
-            raise "Can not resolve the host address"
+            raise Exception("Can not resolve the host address")
         return dns_servers
 
 NETWORK = Network()

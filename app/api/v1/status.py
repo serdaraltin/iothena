@@ -1,6 +1,5 @@
 from app.api.v1.base import BaseApi
 from app.helpers.time import TIME_HELPER
-from app.services.systems.thread import THREAD_SERVICE
 from app.utils.firmware import FIRMWARE
 from app.utils.network import NETWORK
 from app.utils.resource import RESOURCE
@@ -15,11 +14,16 @@ class StatusApi(BaseApi):
         self.thermal = THERMAL
         self.network = NETWORK
         self.firmware = FIRMWARE
-        self.process = THREAD_SERVICE.get_threads()
+        #self.services = SERVICES
 
     @staticmethod
-    async def get_processes():
-        return THREAD_SERVICE.get_threads()
+    async def update(self):
+        self.resource = RESOURCE.update()
+        self.system = SYSTEM
+        self.thermal = THERMAL.update()
+        self.network = NETWORK.update()
+        self.firmware = FIRMWARE
+        #self.services = SERVICES
 
     @staticmethod
     async def get_status():
@@ -42,12 +46,12 @@ class StatusApi(BaseApi):
             "memory_usage": RESOURCE.get_memory_info()['used'],
             "disk_usage": RESOURCE.get_disk_info()['used'],
             "last_checked": TIME_HELPER.get_current_time(),
-            "services": THREAD_SERVICE.get_threads(),
+            #"services": SERVICE.list_services(),
         }
         return status
 
     async def get_property(self, property):
         if not hasattr(self, property):
             return {"error": f"No such property: {property}"}
-
+        await self.update(self)
         return {property: getattr(self, property)}

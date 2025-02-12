@@ -17,4 +17,5 @@ class System(BaseInfo):
         self.architecture = platform.architecture()
         self.platform = platform.platform()
 
+
 SYSTEM = System()
