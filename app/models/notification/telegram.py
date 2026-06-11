@@ -1,6 +1,3 @@
-from telegram import ForceReply, Update
-from telegram.ext import Application, CommandHandler, ContextTypes, MessageHandler, filters
-
 from app.models.base import BaseModel
 
 class TelegramModel(BaseModel):
