@@ -1,6 +1,6 @@
 api:
   host: "0.0.0.0"  # The IP address where the API will listen
-  port: 5000        # The port on which the API will listen
+  port: 6000        # The port on which the API will listen
   base_url: "/api"  # The base URL of the API
   router: "v1"
   
