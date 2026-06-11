@@ -1,6 +1,7 @@
 import websocket
 from fastapi import APIRouter
 
+from app.api.v1.usb import UsbApi
 from app.api.v1.camera import CameraApi
 from app.api.v1.device import DeviceApi
 from app.api.v1.network import NetworkApi
@@ -58,6 +59,9 @@ class V1Router(APIRouter):
         self.add_api_websocket_route("/ws/{client_id}", websocket_api.websocket_endpoint)  # Client websocket connection
         self.add_api_websocket_route("/ws", websocket_api.data)  # Generic realtime websocket endpoint
 
+
+        usb_api = UsbApi()
+        self.add_api_route("/usb", usb_api.get, methods=["GET"])
         # ==========================================================
         # Device API
         # ==========================================================
